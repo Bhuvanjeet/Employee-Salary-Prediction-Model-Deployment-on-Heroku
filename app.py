@@ -13,7 +13,7 @@ def home():   # this will be the homepage
 
 @app.route('/predict',methods = ['POST'])
 def predict(): # for rendering results on HTML GUI  
-    int_features = [int(x) for x in request.form.values()]   #'request' will take input from all the form fields.
+    int_features = [float(x) for x in request.form.values()]   #'request' will take input from all the form fields.
     final_features = [np.array(int_features)]
     prediction = lm_model.predict(final_features)
     

@@ -21,6 +21,10 @@ def word_to_int(w):
 
 df['experience'] = df['experience'] .apply(lambda x : (word_to_int(x)))
 
+df['experience'] = df['experience'].astype('float64')
+df['interview_score(out of 10)'] = df['interview_score(out of 10)'].astype('float64')
+df['salary($)'] = df['salary($)'].astype('float64')
+
 # features in X , label(target) in y:
 
 X = df.drop('salary($)',axis=1)
@@ -40,7 +44,3 @@ pickle.dump(lm,open('lm_model.pkl','wb'))
 
 # 'lm_model.pkl'- this file will be deployed in Heroku environment
 
-#loading model to compare the results
-
-# lm_model = pickle.load(open('lm_model.pkl','rb'))
-# print(lm_model.predict([[2,9,6]]))
